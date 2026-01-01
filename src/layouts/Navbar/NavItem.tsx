@@ -1,0 +1,23 @@
+import { NavLink } from "react-router-dom";
+import type { NavItemProps } from "../types";
+import { cn } from "@/lib/utils";
+
+function NavItem({ label, to,icon }: NavItemProps) {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        cn(
+          "flex items-center text-second-text gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+          "hover:text-primary hover:bg-muted",
+          isActive && "text-forground"
+        )
+      }
+    >
+      {label}
+      {icon}
+    </NavLink>
+  );
+}
+
+export default NavItem

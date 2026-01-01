@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "tailwindcss/utilities";
@@ -5,7 +7,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 5px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
@@ -19,7 +21,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-foreground: var(--project-light-text-color);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -29,7 +31,8 @@
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
-  --color-ring: var(--ring);
+  --color-input-background: var(--project-input-background);
+  --color-ring: var(--primary);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -43,12 +46,19 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-second-text: var(--project-second-text-color);
+  --color-input-group-border: var(--project-input-group-border);
+  --color-light-gray-2: var(--project-light-gary-2);
+  --color-light-gray-1: var(--project-light-gary-1);
+  --color-success:var(--project-success-color);
+  --color-secondary-1:var(--project-secondary-color-1);
+  --color-disabled-element:var(--project-disabled-element-color);
 }
 
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.2945 0.0429 272.35);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -63,7 +73,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --input: oklch(0.9249 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -78,6 +88,20 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Project Design Colors */
+  --project-primary-color: oklch(0.693 0.1511 240.64);
+  --project-secondary-color-1: oklch(0.555 0.096 172.47);
+  --project-secondary-color-2: oklch(0.555 0.096 172.47);
+  --project-muted-color: oklch(0.7984 0 0);
+  --project-second-text-color: oklch(0.5555 0 0);
+  --project-light-text-color: oklch(1 0 0);
+  --project-input-background: oklch(0.9821 0 0);
+  --project-input-group-border: oklch(0.8884 0 0);
+  --project-light-gary-2: oklch(0.9431 0 0);
+  --project-light-gary-1: oklch(0.9851 0 0);
+  --project-success-color:oklch(0.7145 0.1663 154.07);
+  --project-disabled-element-color: oklch(0.7953 0.0876 246.97);
 }
 
 .dark {
@@ -116,10 +140,64 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 box-border;
+    font-family: "Montserrat", sans-serif;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground box-border;
+  }
+  h1 {
+    @apply text-[40px] lg:text-[58px];
+  }
+  h2 {
+    @apply text-[40px] leading-[50px];
+  }
+  h3 {
+    @apply text-[24px] leading-[32px];
+  }
+  h4 {
+    @apply text-[20px] leading-[30px];
+  }
+   h5 {
+    @apply text-[16px] leading-[24px];
+  }h6 {
+    @apply text-sm leading-[24px];
+  }
+  p{
+    @apply text-sm leading-[20px];
+  }
+  a{
+    @apply text-sm leading-[20px]; 
+  }
+  small{
+    @apply text-xs leading-[16px];
+  }
+  .animate-slide-in {
+  animation: slideInRight 0.25s ease-out forwards;
+}
+.range-input {
+  @apply absolute w-full h-6 bg-transparent appearance-none pointer-events-none;
+}
+
+.range-input::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-white border border-primary rounded-full cursor-pointer pointer-events-auto;
+}
+
+.range-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 1px solid hsl(var(--primary));
+  border-radius: 9999px;
+  cursor: pointer;
+}
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
