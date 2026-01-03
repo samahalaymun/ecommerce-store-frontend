@@ -16,8 +16,8 @@ function CategoryCardComponent({ category }: CategoryCardProps) {
       key={category.slug}
       className={({ isActive }) =>
         cn(
-          "shrink-0 snap-start overflow-hidden group py-4 text-muted-foreground hover:font-bold cursor-pointer hover:text-foreground",
-          isActive && "text-forground font-bold"
+          "shrink-0 snap-start overflow-hidden group py-4 text-muted-foreground cursor-pointer hover:text-foreground",
+          isActive && "text-forground"
         )
       }
     >

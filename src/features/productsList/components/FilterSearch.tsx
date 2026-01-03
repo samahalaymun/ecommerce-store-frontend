@@ -1,6 +1,5 @@
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
 type FilterSearchProps = {
   value: string;
@@ -8,6 +7,7 @@ type FilterSearchProps = {
 };
 
 function FilterSearch({ value, onChange }: FilterSearchProps) {
+  
   return (
     <div className="w-full">
       <InputGroup>
@@ -18,9 +18,9 @@ function FilterSearch({ value, onChange }: FilterSearchProps) {
           onChange={(e) => onChange(e.target.value)}
           data-align="inline-start"
         />
-        <div className="px-3 flex items-center" data-align="inline-start">
+        <InputGroupAddon align="inline-end">
           <Search size={18} className="text-second-text" />
-        </div>
+        </InputGroupAddon>
       </InputGroup>
     </div>
   );

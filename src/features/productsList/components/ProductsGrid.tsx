@@ -12,7 +12,9 @@ function ProductsGrid({ products, viewMode }: ProductsGridProps) {
   if (viewMode === "list") {
     return (
       <div className="flex flex-col gap-6">
-        {products.map((product) => <ProductCardList key={product.id} product={product} />)}
+        {products.map((product) => (
+          <ProductCardList key={product.id} product={product} />
+        ))}
       </div>
     );
   }

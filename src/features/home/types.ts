@@ -18,7 +18,14 @@ export type ShopCardProps = {
   category: string;
   image: string;
 };
-
+export type productReview = {
+  id: string | number;
+  reviewerName: string;
+  reviewerEmail: string;
+  rating: number;
+  comment: string;
+  date: string;
+};
 export type Product = {
   id: string | number;
   title: string;
@@ -30,8 +37,19 @@ export type Product = {
   discountPercentage: number;
   colors: string[];
   brand: string;
-  rating:number;
-  stock:number;
+  rating: number;
+  stock: number;
+  images?: string[];
+  sku?: string;
+  warrantyInformation?: string;
+  shippingInformation?: string;
+  availabilityStatus?: string;
+  reviews?: productReview[];
+  returnPolicy?: string;
+  dimensions?: {
+    width: number;
+    height: number;
+    depth: number;}
 };
 export type NeuralUniverseHeroProps = {
   subtitle?: string;

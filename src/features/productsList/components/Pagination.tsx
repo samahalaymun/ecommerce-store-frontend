@@ -1,14 +1,15 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getPaginationPages } from "../utils/pagination";
-import { useProductsQuery } from "../context/ProductsQueryContext";
+import { useProductsFilters } from "../hooks/useProductsFilters";
 
 type PaginationProps = {
   totalPages: number;
 };
 
 function Pagination({ totalPages }: PaginationProps) {
-  const { page, setPage } = useProductsQuery();
+  const { page, setPage } = useProductsFilters();
+
   const pages = getPaginationPages(page, totalPages);
   return (
     <div className="flex items-center justify-center gap-2">

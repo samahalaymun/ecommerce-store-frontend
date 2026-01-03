@@ -1,22 +1,24 @@
 import FilterSearch from "./FilterSearch";
-import FilterCategoryLinks from "./FilterCategoryLinks";
 import FilterBrandCheckboxes from "./FilterBrandCheckboxes";
 import FilterColorSwatches from "./FilterColorSwatches";
-import FilterCategoryRadio from "./FilterCategoryRadio";
 import FilterPopularTags from "./FilterPopularTags";
 import FilterPriceRange from "./FilterPriceRange";
 import type { FilterState } from "../types";
 import { Button } from "@/components/ui/button";
-import { useProductsQuery } from "../context/ProductsQueryContext";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { FilterXIcon } from "lucide-react";
+import { useProductsFilters } from "../hooks/useProductsFilters";
 
-type FilterCardProps = {
-  isOpen: boolean;
-  onClose: () => void;
- 
-};
-
-function FilterCard({ isOpen, onClose }: FilterCardProps) {
-  const { filters, setFilters } = useProductsQuery();
+function FilterCard() {
+  
+  const {  filters, setFilters } =
+    useProductsFilters();
 
   const updateFilter = (updates: Partial<FilterState>) => {
     setFilters({
@@ -24,7 +26,6 @@ function FilterCard({ isOpen, onClose }: FilterCardProps) {
       ...updates,
     });
   };
-
   const brands = [
     "Essence",
     "Glamour Beauty",
@@ -52,52 +53,25 @@ function FilterCard({ isOpen, onClose }: FilterCardProps) {
     { id: 4, label: "Tag", variant: "outline" as const },
   ];
 
-  if (!isOpen) return null;
-  ///
   return (
-    <div className="fixed inset-0 z-50">
-      {/* Overlay */}
-      <div className="fixed inset-0 bg-black/50" onClick={onClose} />
-
-      {/* Filter Card - Slides from left */}
-      <div className="fixed left-0 top-0 h-full w-full max-w-sm bg-background shadow-lg overflow-y-auto animate-in slide-in-from-left duration-300">
-        <div className="p-6 flex flex-col gap-6">
-          <div className="flex items-center justify-between">
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="secondary" className="cursor-pointer">
+          <FilterXIcon />
+          Filter
+        </Button>
+      </SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>
             <h5 className="font-bold text-foreground">Filter:</h5>
-            <Button onClick={onClose} variant="ghost" size="icon-sm">
-              ✕
-            </Button>
-          </div>
-
-          {/* Search */}
+          </SheetTitle>
+        </SheetHeader>
+        <div className="grid flex-1  pt-1 auto-rows-min gap-6 px-4 overflow-y-auto">
           <FilterSearch
             value={filters.search}
             onChange={(value) => updateFilter({ search: value })}
           />
-
-          {/* Category Links */}
-          {/* <FilterCategoryLinks
-            title="Accessories"
-            links={categoryLinks}
-            onSelect={(label) => updateFilter({ categories: [label] })}
-          />
-
-          <FilterCategoryLinks
-            title="Bags"
-            links={[
-              { label: "View All", to: "/" },
-              { label: "Product", to: "" },
-            ]}
-          />
-
-          <FilterCategoryLinks
-            title="Clothing"
-            links={[
-              { label: "View All", to: "/" },
-              { label: "Features", to: "" },
-            ]}
-          /> */}
-
           {/* Brands */}
           <FilterBrandCheckboxes
             brands={brands}
@@ -122,15 +96,6 @@ function FilterCard({ isOpen, onClose }: FilterCardProps) {
             }}
           />
 
-          {/* Category Radio */}
-          {/* <FilterCategoryRadio
-            categories={categories}
-            selectedCategory={filters.selectedCategory}
-            onSelect={(category) =>
-              updateFilter({ selectedCategory: category })
-            }
-          /> */}
-
           {/* Popular Tags */}
           <FilterPopularTags
             tags={popularTags}
@@ -144,13 +109,13 @@ function FilterCard({ isOpen, onClose }: FilterCardProps) {
           <FilterPriceRange
             min={0}
             max={1000}
-            value={filters.priceRange}
+            value={filters.priceRange ?? [0, 1000]}
             onChange={(range) => updateFilter({ priceRange: range })}
             onApply={() => {}}
           />
         </div>
-      </div>
-    </div>
+      </SheetContent>
+    </Sheet>
   );
 }
 

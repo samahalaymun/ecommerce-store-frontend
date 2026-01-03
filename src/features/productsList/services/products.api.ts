@@ -12,6 +12,7 @@ export async function fetchProducts({
   sort,
   filters,
   limit = 12,
+  signal,
 }: FetchProductsArgs) {
   const skip = (page - 1) * limit;
 
@@ -38,23 +39,26 @@ export async function fetchProducts({
     params.sortBy = sort;
     params.order = "asc";
   }
-if (sort && sort === "price-low") {
-  params.sortBy = "price";
-  params.order = "asc";
-}
-if (sort && sort === "price-high") {
-  params.sortBy = "price";
-  params.order = "desc";
-}
-if (sort && sort === "newest") {
-  params.sortBy = "date";
-  params.order = "desc";
-}
-if (sort && sort === "oldest") {
-  params.sortBy = "date";
-  params.order = "asc";
-}
-  const { data } = await api.get(url, { params });
+  if (sort && sort === "price-low") {
+    params.sortBy = "price";
+    params.order = "asc";
+  }
+  if (sort && sort === "price-high") {
+    params.sortBy = "price";
+    params.order = "desc";
+  }
+  if (sort && sort === "newest") {
+    params.sortBy = "date";
+    params.order = "desc";
+  }
+  if (sort && sort === "oldest") {
+    params.sortBy = "date";
+    params.order = "asc";
+  }
+  const { data } = await api.get(url, {
+    params,
+    signal,
+  });
 
   return data;
 }

@@ -3,6 +3,7 @@ import PageContainer from "@/layouts/PageContainer";
 import Home from "@/pages/Home";
 import ProductDetails from "@/pages/ProductDetails";
 import ProductsList from "@/pages/ProductsList";
+import ProductsLayout from "@/pages/ProductsLayout";
 import ErrorPage from "@/pages/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -11,9 +12,15 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/products", element: <ProductsList /> },
-      { path: "/products/category/:category", element: <ProductsList /> },
-      { path: "/products/:id", element: <ProductDetails /> },
+      {
+        path: "products",
+        element: <ProductsLayout />,
+        children: [
+          { index: true, element: <ProductsList /> },
+          { path: "category/:category", element: <ProductsList /> },
+          { path: ":id", element: <ProductDetails /> },
+        ],
+      },
     ],
   },
 ]);

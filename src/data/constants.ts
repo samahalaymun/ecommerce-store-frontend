@@ -58,7 +58,9 @@ export const Resources = [
     to: "api",
   },
 ];
-export const PRODUCT_CATEGORIES_QUERY_KEY = ["product-categories"];
+export const PRODUCT_CATEGORIES_QUERY_KEY = "product-categories";
+export const PRODUCT_PRODUCTS_QUERY_KEY = "products";
+export const PRODUCT_PRODUCT_DETAILS_QUERY_KEY = "product-details";
 export const DEFAULT_FILTERS: FilterState = {
   search: "",
   brands: [],

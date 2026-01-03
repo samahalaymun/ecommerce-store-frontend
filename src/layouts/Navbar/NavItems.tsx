@@ -1,15 +1,17 @@
-import { cn } from '@/lib/utils';
-import NavItem from './NavItem';
-import { ChevronDown } from 'lucide-react';
+import { cn } from "@/lib/utils";
+import NavItem from "./NavItem";
+import NavDropDownItem from "./NavDropDownItem";
 
-function NavItems({ className }: { className:string }) {
+
+function NavItems({ className }: { className: string }) {
+
   return (
     <ul className={cn("flex gap-3.75", className)}>
       <li>
         <NavItem to="/" label="Home" />
       </li>
       <li>
-        <NavItem to="/products" label="Shop" icon={<ChevronDown size={20} />} />
+        <NavDropDownItem />
       </li>
       <li>
         <NavItem to="/about" label="About" />
@@ -27,4 +29,4 @@ function NavItems({ className }: { className:string }) {
   );
 }
 
-export default NavItems
+export default NavItems;

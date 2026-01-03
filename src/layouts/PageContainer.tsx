@@ -1,5 +1,5 @@
 import Navbar from "./Navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Footer from "./Footer/Footer";
 
 function PageContainer() {
@@ -7,6 +7,7 @@ function PageContainer() {
     <>
       <Navbar />
       <main className="min-h-screen">
+        <ScrollRestoration />
         <Outlet />
       </main>
       <Footer />

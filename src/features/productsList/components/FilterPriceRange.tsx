@@ -12,11 +12,12 @@ function FilterPriceRange({
   onChange,
   onApply,
 }: FilterPriceRangeProps) {
+  
   const [localValue, setLocalValue] = useState<[number, number]>(value);
   const minPercent = ((localValue[0] - min) / (max - min)) * 100;
   const maxPercent = ((localValue[1] - min) / (max - min)) * 100;
   return (
-    <div className="flex flex-col gap-5 overflow-hidden">
+    <div className="flex flex-col gap-5 overflow-hidden mb-4">
       <h6 className="font-bold text-foreground">Price</h6>
 
       {/* Slider */}
@@ -64,7 +65,7 @@ function FilterPriceRange({
         />
       </div>
       {/* Inputs */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 ">
         <div className="relative flex-1">
           <Input value={localValue[0]} readOnly />
           <span className="absolute right-3 top-1/2 -translate-y-1/2">$</span>

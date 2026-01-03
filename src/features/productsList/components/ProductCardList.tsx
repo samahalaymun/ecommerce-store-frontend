@@ -42,16 +42,6 @@ function ProductCardList({ product }: ProductCardListProps) {
           </h5>
         </div>
         <p>{product.description}</p>
-        {/* <div className="flex items-center gap-2 mt-1">
-          {product.colors.map((color, index) => (
-            <div
-              key={index}
-              className="w-4 h-4 rounded-full border border-border"
-              style={{ backgroundColor: color }}
-              aria-label={`Color option: ${color}`}
-            />
-          ))}
-        </div> */}
       </div>
     </Link>
   );

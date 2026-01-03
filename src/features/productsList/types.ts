@@ -1,11 +1,11 @@
 import type { Product } from "../home/types";
 
 export type FilterState = {
-  search: string;
-  brands: string[];
-  colors: string[];
-  priceRange: [number, number];
-  tags: string[];
+  search?: string;
+  brands?: string[];
+  colors?: string[];
+  priceRange?: [number, number];
+  tags?: string[];
 };
 
 export type CategoryCard = {
@@ -15,7 +15,7 @@ export type CategoryCard = {
   image?: string;
 };
 export type Category = {
-  slug: string | number;
+  slug: string;
   name: string;
   image?: string;
 };
@@ -36,9 +36,10 @@ export type SortOption =
 export type FetchProductsArgs = {
   category?: string;
   page: number;
-  sort: SortOption;
+  sort: string;
   filters: FilterState;
   limit?: number;
+  signal?: AbortSignal;
 };
 export type UseProductsArgs = FetchProductsArgs;
   export type FilterCategoryLinksProps = {

@@ -1,4 +1,6 @@
 import type { Product } from "@/features/home/types";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 type ProductCardProps = {
@@ -7,6 +9,8 @@ type ProductCardProps = {
 };
 
 function ProductCard({ product, className }: ProductCardProps) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
@@ -15,13 +19,27 @@ function ProductCard({ product, className }: ProductCardProps) {
       to={`/products/${product.id}`}
       className={`flex flex-col gap-4 ${className || ""}`}
     >
-      <div className="w-full relative border rounded-xs  overflow-hidden">
+      <div className="relative w-full aspect-square overflow-hidden rounded-xs">
+        {/* Skeleton */}
+        {!imageLoaded && (
+          <div className="absolute inset-0 animate-pulse bg-muted-foreground/20" />
+        )}
+
         <img
           src={product.thumbnail}
-          alt={product.category}
-          className="w-full h-full "
+          alt={product.title}
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+          className={cn(
+            "w-full h-full object-cover transition-opacity duration-300",
+            imageLoaded ? "opacity-100" : "opacity-0"
+          )}
         />
-       {product.stock === 0&&<p className="absolute start-2.5 top-2.5 p-1 rounded-xs bg-secondary-1 text-light-gray-1">Sold Out</p>}
+        {product.stock === 0 && (
+          <p className="absolute start-2.5 top-2.5 p-1 rounded-xs bg-secondary-1 text-light-gray-1">
+            Sold Out
+          </p>
+        )}
       </div>
       <div className="flex flex-col gap-2.5  ">
         <h5 className="font-bold text-foreground  w-full truncate">
