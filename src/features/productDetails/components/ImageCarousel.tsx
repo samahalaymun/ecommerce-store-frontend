@@ -28,7 +28,7 @@ export default function ImageCarousel({
       <CarouselContent>
         {images.map((src, i) => (
           <CarouselItem key={i}>
-            <div className="w-full aspect-4/3 rounded-md overflow-hidden bg-background">
+            <div className="w-full aspect-4/3 rounded-md overflow-hidden bg-card">
               <img
                 src={src}
                 alt={`${alt} ${i + 1}`}
@@ -38,8 +38,8 @@ export default function ImageCarousel({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="lg:start-10 start-4" />
-      <CarouselNext className="lg:end-10 end-4" />
+      <CarouselPrevious className="lg:left-10 left-1" />
+      <CarouselNext className="lg:right-10 right-1" />
     </Carousel>
   );
 }

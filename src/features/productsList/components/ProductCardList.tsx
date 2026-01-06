@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import type { Product } from "@/features/home/types";
+import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type ProductCardListProps = {
@@ -13,12 +15,15 @@ function ProductCardList({ product }: ProductCardListProps) {
       to={`/products/${product.id}`}
       className="flex flex-col sm:flex-row gap-4 p-4 border border-border rounded-lg"
     >
-      <div className="w-full sm:w-48 aspect-square overflow-hidden rounded-lg">
+      <div className="w-full relative sm:w-48 aspect-square overflow-hidden rounded-lg">
         <img
           src={product.thumbnail}
           alt={product.category}
           className="w-full h-full object-cover"
         />
+        <Button className="absolute top-0 end-0" size="icon-lg" variant="ghost">
+          <Heart size={20} />
+        </Button>
       </div>
       <div className="flex-1 flex flex-col gap-2">
         <div className="flex justify-between items-center">

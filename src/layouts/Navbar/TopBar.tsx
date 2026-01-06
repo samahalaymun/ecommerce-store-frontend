@@ -8,7 +8,7 @@ import { YouTubeIcon } from './SocialIcons/YouTubeIcon';
 function TopBar() {
   return (
     <section
-      className="bg-foreground text-primary-foreground px-10 py-4 w-full"
+      className="bg-foreground dark:bg-secondary-1 text-primary-foreground px-10 py-4 w-full"
       aria-label="Top bar"
     >
       <div className=" w-full flex justify-between items-center">
@@ -16,14 +16,14 @@ function TopBar() {
         <div className="flex gap-2.5">
           <a
             href="tel:+2255550118"
-            className="flex font-bold gap-2 items-center"
+            className="flex font-bold gap-2 items-center "
           >
             <Phone size={16} />
             (225) 555-0118
           </a>
           <a
             href="mailto:michelle.rivera@example.com"
-            className="flex gap-2 items-center font-bold"
+            className="flex gap-2 items-center font-bold "
           >
             <Mail size={16} />
             michelle.rivera@example.com

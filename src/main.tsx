@@ -9,9 +9,9 @@ import "./App.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryProvider>
-      <NuqsAdapter>
-        <RouterProvider router={router} />
-      </NuqsAdapter>
+        <NuqsAdapter>
+          <RouterProvider router={router} />
+        </NuqsAdapter>
     </QueryProvider>
   </StrictMode>
 );

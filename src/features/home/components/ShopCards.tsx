@@ -2,7 +2,7 @@ import ShopCard from "./ShopCard";
 
 function ShopCards() {
   return (
-    <section className="flex flex-col items-center bg-light-gray-1 gap-12 py-20 px-4 lg:px-10">
+    <section className="flex flex-col items-center bg-light-gray-1 dark:bg-card gap-12 py-20 px-4 lg:px-10">
       <div className="gap-2.5 flex flex-col items-center">
         <h3 className="font-bold text-center">EDITOR’S PICK</h3>
         <p className="text-second-text font-normal text-center">

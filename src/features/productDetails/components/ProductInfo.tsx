@@ -39,7 +39,7 @@ export default function ProductInfo({ product }: Props) {
             ${salePrice?.toFixed(2)}
           </h5>
         </div>
-        <span className="py-1 px-4 text-xs rounded-xs bg-foreground text-light-gray-1">
+        <span className="py-1 px-4 text-xs rounded-xs bg-muted text-muted-foreground">
           {product.discountPercentage}% off
         </span>
       </div>

@@ -19,7 +19,7 @@ export type ShopCardProps = {
   image: string;
 };
 export type productReview = {
-  id: string | number;
+  id:  number;
   reviewerName: string;
   reviewerEmail: string;
   rating: number;
@@ -27,7 +27,7 @@ export type productReview = {
   date: string;
 };
 export type Product = {
-  id: string | number;
+  id:  number;
   title: string;
   thumbnail: string;
   description: string;

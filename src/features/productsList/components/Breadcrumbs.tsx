@@ -1,3 +1,11 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,30 +21,27 @@ type BreadcrumbsProps = {
 
 function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-2">
-      {items.map((item, index) => (
-        <div key={index} className="flex items-center gap-2">
-          {item.to ? (
-            <Link
-              to={item.to}
-              className={cn(
-                index === 0
-                  ? "text-foreground font-bold"
-                  : "text-second-text hover:text-primary"
-              )}
-            >
-              {item.label}
-            </Link>
-          ) : (
-            <span className="text-muted-foreground">{item.label}</span>
-          )}
+    <Breadcrumb>
+      <BreadcrumbList>
+        {items.map((item, index) => (
+          <BreadcrumbItem key={index}>
+            {item.to ? (
+              <BreadcrumbLink asChild>
+                <Link to={item.to}>{item.label}</Link>
+              </BreadcrumbLink>
+            ) : (
+              <BreadcrumbPage>{item.label}</BreadcrumbPage>
+            )}
 
-          {index < items.length - 1 && (
-            <ChevronRight size={16} className="text-muted-foreground" />
-          )}
-        </div>
-      ))}
-    </nav>
+            {index < items.length - 1 && (
+              <BreadcrumbSeparator>
+                <ChevronRight size={16} className="text-muted-foreground" />
+              </BreadcrumbSeparator>
+            )}
+          </BreadcrumbItem>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }
 

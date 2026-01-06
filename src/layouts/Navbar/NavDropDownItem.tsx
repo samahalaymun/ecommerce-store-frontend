@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 function NavDropDownItem() {
   const { pathname } = useLocation();
   const isShopActive = pathname.startsWith("/products");
+console.log(isShopActive);
 
   const { data: categories } = useQuery({
     queryKey: [PRODUCT_CATEGORIES_QUERY_KEY],
@@ -23,7 +24,7 @@ function NavDropDownItem() {
       <DropdownMenuTrigger asChild>
         <span
           className={cn(
-            "cursor-pointer hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+            "cursor-pointer text-second-text  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
             isShopActive && "text-foreground"
           )}
         >

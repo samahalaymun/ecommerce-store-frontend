@@ -3,8 +3,10 @@ import {  Heart, Search, ShoppingCart } from "lucide-react";
 import ActionNavItem from "./ActionNavItem";
 import AuthActions from "./AuthActions";
 import NavItems from "./NavItems";
+import { useNavigate } from "react-router-dom";
 
 function MainNav() {
+  const navigate=useNavigate();
   return (
     <nav
       aria-label="Main navigation"
@@ -13,7 +15,7 @@ function MainNav() {
       <div className="flex gap-10 items-center w-full ">
         <Logo />
         <div className="flex justify-between items-center w-full">
-           <NavItems className="flex-row" />
+          <NavItems className="flex-row" />
 
           <div className="flex items-center gap-3.75">
             <AuthActions />
@@ -31,7 +33,7 @@ function MainNav() {
 
             <ActionNavItem
               icon={<Heart size={15} />}
-              onClick={() => console.log("click")}
+              onClick={() => navigate("/favorites")}
               value="2"
               className="text-primary"
             />

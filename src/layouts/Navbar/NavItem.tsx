@@ -8,7 +8,7 @@ function NavItem({ label, to,icon }: NavItemProps) {
       to={to}
       className={({ isActive }) =>
         cn(
-          "flex items-center text-second-text gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+          "flex items-center text-second-text   gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
           "hover:text-primary hover:bg-muted",
           isActive && "text-forground"
         )

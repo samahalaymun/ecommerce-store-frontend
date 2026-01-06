@@ -10,7 +10,7 @@ type PostCardProps = {
 function PostCard({ post, className }: PostCardProps) {
   return (
     <div
-      className={`flex flex-col bg-background shadow-sm rounded-lg overflow-hidden ${
+      className={`flex flex-col bg-card shadow-sm rounded-lg overflow-hidden ${
         className || ""
       }`}
     >
@@ -36,8 +36,9 @@ function PostCard({ post, className }: PostCardProps) {
             <small
               key={index}
               className={cn(
-                "text-second-text font-normal",
-                index === 0 && "text-disabled-element"
+                "text-second-text  font-normal",
+                index === 0 &&
+                  "text-disabled-element dark:text-disabled-element"
               )}
             >
               {tag}
@@ -49,7 +50,9 @@ function PostCard({ post, className }: PostCardProps) {
         <h4 className="font-normal text-foreground">{post.title}</h4>
 
         {/* Description */}
-        <p className="text-second-text">{post.description}</p>
+        <p className="text-second-text ">
+          {post.description}
+        </p>
 
         {/* Metadata */}
         <div className="flex items-center justify-between py-3.75 gap-6 text-second-text">
@@ -66,9 +69,9 @@ function PostCard({ post, className }: PostCardProps) {
         {/* Learn More Link */}
         <a
           href={post.learnMoreLink || "#"}
-          className="text-second-text font-bold  flex items-center gap-2 hover:underline mt-2"
+          className="text-second-text  font-bold  flex items-center gap-2 hover:underline mt-2"
         >
-          Learn More <ChevronRight size={16} className="text-primary"/>
+          Learn More <ChevronRight size={16} className="text-primary" />
         </a>
       </div>
     </div>

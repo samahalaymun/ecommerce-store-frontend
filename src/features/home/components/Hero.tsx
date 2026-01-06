@@ -59,8 +59,8 @@ function Hero({ slides }: { slides: HeroSlideProps[] }) {
         </CarouselContent>
 
         {/* Arrows */}
-        <CarouselPrevious className="lg:start-10 start-4 bg-white/80 hover:bg-white text-black" />
-        <CarouselNext className="lg:end-10 end-4 bg-white/80 hover:bg-white text-black" />
+        <CarouselPrevious className="lg:left-10 left-4  hover:bg-white text-light-gray-1" />
+        <CarouselNext className="lg:right-10 right-4  hover:bg-white text-light-gray-1" />
       </Carousel>
       <div className="absolute bottom-6 start-1/2 -translate-x-1/2 hidden lg:flex">
         {Array.from({ length: snapCount }).map((_, index) => (

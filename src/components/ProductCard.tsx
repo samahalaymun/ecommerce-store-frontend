@@ -2,6 +2,8 @@ import type { Product } from "@/features/home/types";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
+import { Heart } from "lucide-react";
 
 type ProductCardProps = {
   product: Product;
@@ -9,17 +11,20 @@ type ProductCardProps = {
 };
 
 function ProductCard({ product, className }: ProductCardProps) {
-    const [imageLoaded, setImageLoaded] = useState(false);
-
+  const [imageLoaded, setImageLoaded] = useState(false);
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
+  const addToFavourites = (e: any) => {
+    e.preventDefault();
+    console.log("Added to favourites");
+  };
   return (
     <Link
       to={`/products/${product.id}`}
-      className={`flex flex-col gap-4 ${className || ""}`}
+      className={`flex flex-col gap-4  ${className || ""}`}
     >
-      <div className="relative w-full aspect-square overflow-hidden rounded-xs">
+      <div className="relative bg-muted border border-border  w-full aspect-square overflow-hidden rounded-xs">
         {/* Skeleton */}
         {!imageLoaded && (
           <div className="absolute inset-0 animate-pulse bg-muted-foreground/20" />
@@ -40,9 +45,17 @@ function ProductCard({ product, className }: ProductCardProps) {
             Sold Out
           </p>
         )}
+        <Button
+          onClick={addToFavourites}
+          className="absolute top-0 end-0"
+          size="icon-lg"
+          variant="ghost"
+        >
+          <Heart size={20} />
+        </Button>
       </div>
       <div className="flex flex-col gap-2.5  ">
-        <h5 className="font-bold text-foreground  w-full truncate">
+        <h5 className="font-bold text-foreground   w-full truncate">
           {product.title}
         </h5>
         <p className="text-muted-foreground min-h-8 overflow-hidden">
@@ -57,16 +70,7 @@ function ProductCard({ product, className }: ProductCardProps) {
             ${salePrice?.toFixed(2)}
           </h5>
         </div>
-        <div className="flex items-center gap-2 mt-1">
-          {/* {product.colors.map((color, index) => (
-            <div
-              key={index}
-              className="w-4 h-4 rounded-full border border-border"
-              style={{ backgroundColor: color }}
-              aria-label={`Color option: ${color}`}
-            />
-          ))} */}
-        </div>
+        <div className="flex items-center gap-2 mt-1"></div>
       </div>
     </Link>
   );

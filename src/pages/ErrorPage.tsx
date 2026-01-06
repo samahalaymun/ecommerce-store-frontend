@@ -75,7 +75,7 @@ function ErrorPage() {
         </div>
       </main>
      <footer>
-      <div className="py-6.25 bg-light-gray-1 px-4 lg:px-10">
+      <div className="py-6.25 bg-light-gray-1 dark:bg-card px-4 lg:px-10">
         <h6 className="font-bold text-second-text lg:text-start text-center">
           Made With Love By Finland All Right Reserved
         </h6>

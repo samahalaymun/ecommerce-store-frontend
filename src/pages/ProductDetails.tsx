@@ -29,7 +29,7 @@ function ProductDetails() {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <ImageCarousel images={product.images ?? []} alt={product.title} />

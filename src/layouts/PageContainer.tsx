@@ -1,17 +1,10 @@
-import Navbar from "./Navbar/Navbar";
-import { Outlet, ScrollRestoration } from "react-router-dom";
-import Footer from "./Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 function PageContainer() {
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen">
-        <ScrollRestoration />
-        <Outlet />
-      </main>
-      <Footer />
-    </>
+    <main className="min-h-screen bg-background px-4 lg:px-10">
+      <Outlet />
+    </main>
   );
 }
 

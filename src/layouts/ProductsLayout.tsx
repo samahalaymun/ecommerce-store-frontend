@@ -20,9 +20,9 @@ export default function ProductsLayout() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background px-4 lg:px-10">
+    <div className="flex flex-col">
       {/* Header Section */}
-      <div className="">
+      <div >
         <div className="py-6  flex flex-col md:flex-row justify-between md:items-start items-center gap-7.5">
           <h3 className="font-bold text-foreground">
             {category ? formatCategory(category) : "Shop"}

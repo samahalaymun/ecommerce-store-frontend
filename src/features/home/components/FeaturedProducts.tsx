@@ -28,7 +28,7 @@ function FeaturedProducts() {
           Problems trying to resolve the conflict between
         </p>
       </div>
-      (
+     
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full gap-12 lg:gap-x-7.5 lg:gap-y-20">
           {isFetching
             ? Array.from({ length: 12 }).map(() => <ProductCardSkeleton />)
@@ -36,7 +36,7 @@ function FeaturedProducts() {
                 <ProductCard key={product.id} product={product} />
               ))}
         </div>
-      )
+      
       {isError && <p className="text-destructive">Something is wrong!</p>}
     </section>
   );
