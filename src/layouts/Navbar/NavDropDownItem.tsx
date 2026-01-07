@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 function NavDropDownItem() {
   const { pathname } = useLocation();
   const isShopActive = pathname.startsWith("/products");
-console.log(isShopActive);
 
   const { data: categories } = useQuery({
     queryKey: [PRODUCT_CATEGORIES_QUERY_KEY],

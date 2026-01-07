@@ -146,7 +146,6 @@
   * {
     @apply border-border outline-ring/50 box-border;
     font-family: "Montserrat", sans-serif;
-   
   }
   body {
     @apply bg-background text-foreground box-border;
@@ -204,5 +203,8 @@
   to {
     transform: translateX(0);
   }
+}
+html {
+  transition: background-color 300ms ease, color 300ms ease;
 }
 

@@ -18,7 +18,7 @@ export type NavItemProps = {
   icon?: ReactNode;
 };
 export type ActionNavItemProps = {
-  value?: string;
+  value?: string |number;
   onClick?: () => void;
   icon?: ReactNode;
   className?: string;

@@ -15,9 +15,11 @@ function ProductCard({ product, className }: ProductCardProps) {
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
-  const addToFavourites = (e: any) => {
+  const fav = false;
+
+  const onFavClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    console.log("Added to favourites");
+    e.stopPropagation();
   };
   return (
     <Link
@@ -46,12 +48,16 @@ function ProductCard({ product, className }: ProductCardProps) {
           </p>
         )}
         <Button
-          onClick={addToFavourites}
+          onClick={onFavClick}
           className="absolute top-0 end-0"
           size="icon-lg"
           variant="ghost"
+          aria-pressed={fav}
         >
-          <Heart size={20} />
+          <Heart
+            size={20}
+            fill={fav ? "var(--color-foreground)" : "transparent"}
+          />
         </Button>
       </div>
       <div className="flex flex-col gap-2.5  ">

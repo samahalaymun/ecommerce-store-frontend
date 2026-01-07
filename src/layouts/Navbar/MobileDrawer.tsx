@@ -21,24 +21,6 @@ function MobileDrawer({ open }: MobileDrawerProps) {
         {/* Nav links */}
         <NavItems className="flex-col items-center mb-4" />
         <AuthActions />
-
-        <div className="flex flex-col justify-center items-center gap-3.75 text-primary mt-4">
-          <ActionNavItem
-            icon={<Search size={15} />}
-            onClick={() => console.log("click")}
-            className="text-primary"
-          />
-          <ActionNavItem
-            icon={<ShoppingCart size={18} />}
-            value="1"
-            className="text-primary"
-          />
-          <ActionNavItem
-            icon={<Heart size={18} />}
-            value="1"
-            className="text-primary"
-          />
-        </div>
       </aside>
     </div>
   );

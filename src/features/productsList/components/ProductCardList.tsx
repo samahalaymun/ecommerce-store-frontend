@@ -7,9 +7,14 @@ type ProductCardListProps = {
   product: Product;
 };
 function ProductCardList({ product }: ProductCardListProps) {
-   const originPrice = product.price;
-   const salePrice =
-     product.price - (product.discountPercentage * product.price) / 100;
+  const originPrice = product.price;
+  const salePrice =
+    product.price - (product.discountPercentage * product.price) / 100;
+   const fav = false;
+  const onFavClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
   return (
     <Link
       to={`/products/${product.id}`}
@@ -21,8 +26,16 @@ function ProductCardList({ product }: ProductCardListProps) {
           alt={product.category}
           className="w-full h-full object-cover"
         />
-        <Button className="absolute top-0 end-0" size="icon-lg" variant="ghost">
-          <Heart size={20} />
+        <Button
+          onClick={onFavClick}
+          className="absolute top-0 end-0"
+          size="icon-lg"
+          variant="ghost"
+        >
+          <Heart
+            size={20}
+            fill={fav ? "var(--color-foreground)" : "transparent"}
+          />
         </Button>
       </div>
       <div className="flex-1 flex flex-col gap-2">

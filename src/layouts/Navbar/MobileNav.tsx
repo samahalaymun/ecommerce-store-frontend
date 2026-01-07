@@ -1,12 +1,14 @@
-import { Menu, Search, ShoppingCart } from "lucide-react";
+import { Heart, Menu, Search, ShoppingCart } from "lucide-react";
 import Logo from "./Logo";
 import ActionNavItem from "./ActionNavItem";
 import { useState } from "react";
 import MobileDrawer from "./MobileDrawer";
+import ThemeToggle from "./ThemeToggle";
+import { useNavigate } from "react-router-dom";
 
 function MobileNav() {
   const [open, setOpen] = useState(false);
-  console.log(open);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -15,16 +17,18 @@ function MobileNav() {
         className="flex items-center justify-between px-4 h-14 border-b bg-background"
       >
         <Logo />
-        <div className="flex gap-4">
-          <ActionNavItem
-            icon={<Search size={18} />}
-            onClick={() => console.log("click")}
-            className="text-foreground"
-          />
+        <div className="flex gap-1">
+          <ThemeToggle className="text-foreground" />
           <ActionNavItem
             icon={<ShoppingCart size={18} />}
             onClick={() => console.log("click")}
             value="1"
+            className="text-foreground"
+          />
+          <ActionNavItem
+            icon={<Heart size={15} />}
+            onClick={() => navigate("/favorites")}
+            value={0}
             className="text-foreground"
           />
           <ActionNavItem
