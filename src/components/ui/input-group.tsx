@@ -12,7 +12,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        "group/input-group overflow-hidden bg-input-background border-input-group-border dark:bg-input/30 relative flex w-full items-center rounded-sm border shadow-xs transition-[color,box-shadow] outline-none",
+        "group/input-group overflow-hidden  border-input-group-border bg-input relative flex w-full items-center rounded-sm border shadow-xs transition-[color,box-shadow] outline-none",
         "h-12.5 min-w-0 has-[>textarea]:h-auto",
 
         // Variants based on alignment.
@@ -133,7 +133,7 @@ function InputGroupInput({
     <Input
       data-slot="input-group-control"
       className={cn(
-        "flex-1 rounded-none border-0 bg-input-background shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 rounded-none border-0 bg-input  shadow-none focus-visible:ring-0 ",
         className
       )}
       {...props}
@@ -149,7 +149,7 @@ function InputGroupTextarea({
     <Textarea
       data-slot="input-group-control"
       className={cn(
-        "flex-1 resize-none rounded-none border-0 bg-input-background py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
+        "flex-1 resize-none rounded-none border-0 bg-input py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
         className
       )}
       {...props}

@@ -26,10 +26,10 @@ function ProductCard({ product, className }: ProductCardProps) {
       to={`/products/${product.id}`}
       className={`flex flex-col gap-4  ${className || ""}`}
     >
-      <div className="relative bg-muted border border-border  w-full aspect-square overflow-hidden rounded-xs">
+      <div className="relative bg-card border border-border  w-full aspect-square overflow-hidden rounded-sm">
         {/* Skeleton */}
         {!imageLoaded && (
-          <div className="absolute inset-0 animate-pulse bg-muted-foreground/20" />
+          <div className="absolute  inset-0 animate-pulse bg-muted-foreground/20" />
         )}
 
         <img
@@ -38,12 +38,12 @@ function ProductCard({ product, className }: ProductCardProps) {
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-300",
+            "w-full h-full object-cover hover:scale-105 transition-transform duration-300",
             imageLoaded ? "opacity-100" : "opacity-0"
           )}
         />
         {product.stock === 0 && (
-          <p className="absolute start-2.5 top-2.5 p-1 rounded-xs bg-secondary-1 text-light-gray-1">
+          <p className="absolute start-2.5 top-2.5 p-1 rounded-xs bg-secondary text-secondary-foreground">
             Sold Out
           </p>
         )}
@@ -65,14 +65,14 @@ function ProductCard({ product, className }: ProductCardProps) {
           {product.title}
         </h5>
         <p className="text-muted-foreground min-h-8 overflow-hidden">
-          {product.brand} •{" "}
+          {product.brand && product.brand + " • "}
           <span className="capitalize">{product.category}</span>
         </p>
         <div className="flex items-center gap-2">
           <h5 className="text-muted-foreground line-through">
             ${originPrice?.toFixed(2)}
           </h5>
-          <h5 className="font-bold text-secondary-1">
+          <h5 className="font-bold text-foreground">
             ${salePrice?.toFixed(2)}
           </h5>
         </div>

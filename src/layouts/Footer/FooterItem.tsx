@@ -8,7 +8,7 @@ function FooterItem({ label, to,icon }: NavItemProps) {
       to={to}
       className={({ isActive }) =>
         cn(
-          "flex items-center text-second-text  py-1.5 rounded-md font-bold transition-colors",
+          "flex items-center text-muted-foreground  py-1.5 rounded-md font-bold transition-colors",
           "hover:text-primary",
           isActive && "text-forground"
         )

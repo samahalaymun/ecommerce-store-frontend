@@ -11,7 +11,7 @@ import { Field, FieldDescription } from "@/components/ui/field";
 function Footer() {
   return (
     <footer className="bg-background ">
-      <div className="px-4 bg-light-gray-1 dark:bg-card lg:px-10 flex flex-col gap-2.5 lg:flex-row justify-between py-10 lg:border-b border-border">
+      <div className="px-4 bg-secondary text-secondary-foreground  lg:px-10 flex flex-col gap-2.5 lg:flex-row justify-between py-10 lg:border-b border-border">
         <Logo />
         <div className="flex gap-5">
           <SocialIcon
@@ -51,14 +51,14 @@ function Footer() {
                 Subscribe
               </InputGroupButton>
             </InputGroup>
-            <FieldDescription className="dark:text-muted-foreground">
-              Lore imp sum dolor Amit{" "}
+            <FieldDescription className="text-muted-foreground">
+              Lore imp sum dolor Amit
             </FieldDescription>
           </Field>
         </div>
       </div>
-      <div className="py-6.25 bg-light-gray-1 dark:bg-card px-4 lg:px-10">
-        <h6 className="font-bold text-second-text lg:text-start text-center">
+      <div className="py-6.25 bg-secondary text-secondary-foreground px-4 lg:px-10">
+        <h6 className="font-bold  lg:text-start text-center">
           Made With Love By Finland All Right Reserved
         </h6>
       </div>

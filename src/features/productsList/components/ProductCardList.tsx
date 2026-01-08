@@ -20,11 +20,11 @@ function ProductCardList({ product }: ProductCardListProps) {
       to={`/products/${product.id}`}
       className="flex flex-col sm:flex-row gap-4 p-4 border border-border rounded-lg"
     >
-      <div className="w-full relative sm:w-48 aspect-square overflow-hidden rounded-lg">
+      <div className="w-full relative bg-muted sm:w-48 aspect-square overflow-hidden rounded-lg">
         <img
           src={product.thumbnail}
           alt={product.category}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
         <Button
           onClick={onFavClick}
@@ -42,7 +42,7 @@ function ProductCardList({ product }: ProductCardListProps) {
         <div className="flex justify-between items-center">
           <h5 className="font-bold text-foreground">{product.title}</h5>
           {product.stock === 0 && (
-            <p className="text-center p-1 rounded-xs bg-secondary-1 text-light-gray-1">
+            <p className="text-center p-1 rounded-xs bg-secondary text-light-gray-1">
               Sold Out
             </p>
           )}

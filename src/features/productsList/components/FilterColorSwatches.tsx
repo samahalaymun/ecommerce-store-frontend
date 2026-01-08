@@ -31,11 +31,11 @@ function FilterColorSwatches({
               type="checkbox"
               checked={selectedColors.includes(color.value)}
               onChange={() => onChange(color.value)}
-              className="w-5 h-5 rounded border-border text-primary focus:ring-primary focus:ring-2"
+              className="w-5 h-5 bg-input rounded border-border text-primary focus:ring-primary focus:ring-2"
               style={{ accentColor: color.value, backgroundColor: color.value }}
               aria-label={color.name}
             />
-            <h6 className="text-second-text font-bold group-hover:text-foreground transition-colors">
+            <h6 className="text-muted-foreground font-bold group-hover:text-foreground transition-colors">
               {color.name}
             </h6>
           </label>

@@ -1,12 +1,37 @@
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
+import { themes } from "@/data/constants";
 import { cn } from "@/lib/utils";
+import { setBrandTheme } from "@/utils";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useState } from "react";
 
 function ThemeToggle({ className }: { className?: string }) {
   const { setTheme, theme } = useTheme();
+  const [themeBrand, setThemeBrand] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    const stored = localStorage.getItem("brand-theme");
+    if (stored) {
+      try {
+        setBrandTheme(stored);
+      } catch (e) {
+        localStorage.removeItem("brand-theme");
+      }
+    }
+    return stored;
+  });
 
+  function applyBrandTheme(id: string) {
+    setBrandTheme(id);
+    setThemeBrand(id);
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -85,9 +110,28 @@ function ThemeToggle({ className }: { className?: string }) {
           </svg>
           System
         </DropdownMenuItem>
+        <Separator />
+        {themes.map((th) => (
+          <DropdownMenuItem
+            key={th.id}
+            className={cn(
+              "flex cursor-pointer items-center gap-2",
+              themeBrand === th.id && "font-medium text-primary"
+            )}
+            onClick={() => applyBrandTheme(th.id)}
+          >
+            <span
+              className={cn(
+                "inline-block h-4 w-4 rounded-full border border-muted-foreground",
+                themeBrand === th.id && "bg-primary"
+              )}
+            ></span>
+            {th.label}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
 
-export default ThemeToggle
+export default ThemeToggle;

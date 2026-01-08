@@ -27,7 +27,7 @@ function FilterBrandCheckboxes({
               onChange={() => onToggle(brand)}
               className="w-4 h-4 rounded border-border text-primary focus:ring-primary focus:ring-2"
             />
-            <h6 className="text-second-text font-bold group-hover:text-foreground transition-colors">
+            <h6 className="text-muted-foreground font-bold group-hover:text-foreground transition-colors">
               {brand}
             </h6>
           </label>

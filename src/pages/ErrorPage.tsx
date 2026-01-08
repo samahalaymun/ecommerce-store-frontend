@@ -49,7 +49,7 @@ function ErrorPage() {
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
               {title}!
             </h2>
-            <p className="text-second-text text-base lg:text-lg leading-relaxed">
+            <p className="text-secondary-foreground text-base lg:text-lg leading-relaxed">
               {message}
             </p>
           </div>
@@ -75,8 +75,8 @@ function ErrorPage() {
         </div>
       </main>
      <footer>
-      <div className="py-6.25 bg-light-gray-1 dark:bg-card px-4 lg:px-10">
-        <h6 className="font-bold text-second-text lg:text-start text-center">
+      <div className="py-6.25 bg-secondary  px-4 lg:px-10">
+        <h6 className="font-bold text-secondary-foreground lg:text-start text-center">
           Made With Love By Finland All Right Reserved
         </h6>
       </div>

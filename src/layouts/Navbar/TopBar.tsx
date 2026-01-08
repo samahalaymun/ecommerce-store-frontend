@@ -8,7 +8,7 @@ import { YouTubeIcon } from './SocialIcons/YouTubeIcon';
 function TopBar() {
   return (
     <section
-      className="bg-foreground dark:bg-secondary-1 text-primary-foreground px-10 py-4 w-full"
+      className="bg-secondary text-secondary-foreground px-10 py-4 w-full"
       aria-label="Top bar"
     >
       <div className=" w-full flex justify-between items-center">
@@ -40,7 +40,7 @@ function TopBar() {
             <SocialIcon
               icon={
                 <InstagramIcon
-                  fill="var(--color-primary-foreground)"
+                  fill="var(--color-secondary-foreground)"
                   className="w-4 h-4"
                 />
               }
@@ -50,7 +50,7 @@ function TopBar() {
             <SocialIcon
               icon={
                 <FacebookIcon
-                  fill="var(--color-primary-foreground)"
+                  fill="var(--color-secondary-foreground)"
                   className="w-4 h-4"
                 />
               }
@@ -60,7 +60,7 @@ function TopBar() {
             <SocialIcon
               icon={
                 <TwitterIcon
-                  fill="var(--color-primary-foreground)"
+                  fill="var(--color-secondary-foreground)"
                   className="w-4 h-4"
                 />
               }
@@ -70,7 +70,7 @@ function TopBar() {
             <SocialIcon
               icon={
                 <YouTubeIcon
-                  fill="var(--color-primary-foreground)"
+                  fill="var(--color-secondary-foreground)"
                   className="w-4 h-4"
                 />
               }

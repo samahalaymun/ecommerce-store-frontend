@@ -38,7 +38,7 @@ function NeuralUniverseHero({
             </h2>
 
             {/* Description */}
-            <h4 className="text-second-text text-center lg:text-start">
+            <h4 className="text-muted-foreground/70 text-center lg:text-start">
               {description}
             </h4>
 

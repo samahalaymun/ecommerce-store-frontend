@@ -23,7 +23,7 @@ function NavDropDownItem() {
       <DropdownMenuTrigger asChild>
         <span
           className={cn(
-            "cursor-pointer text-second-text  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+            "cursor-pointer text-muted-foreground  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
             isShopActive && "text-foreground"
           )}
         >

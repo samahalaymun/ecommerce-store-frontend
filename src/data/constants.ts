@@ -71,3 +71,10 @@ export const DEFAULT_FILTERS: FilterState = {
 
 export const DEFAULT_PAGE = 1;
 export const DEFAULT_SORT: SortOption = "popularity";
+export const themes = [
+  { id: "default", label: "Default" },
+  { id: "claymorphism", label: "Claymorphism" },
+  { id: "bold-tech", label: "Bold" },
+  { id: "amethyst", label: "Amethyst Haze" },
+  { id: "bubblegum", label: "Bubblegum" },
+];

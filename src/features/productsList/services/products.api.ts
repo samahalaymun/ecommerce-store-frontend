@@ -55,6 +55,8 @@ export async function fetchProducts({
     params.sortBy = "date";
     params.order = "asc";
   }
+  console.log(url);
+  
   const { data } = await api.get(url, {
     params,
     signal,

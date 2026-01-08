@@ -11,7 +11,7 @@ function AboutHero() {
             About Company
           </h5>
           <h1 className="font-bold">About Us</h1>
-          <h4 className="text-second-text lg:text-start text-center">
+          <h4 className="text-muted-foreground lg:text-start text-center">
             We know how large objects will act, but things on a small scale.
             Problems trying to resolve the conflict between
           </h4>

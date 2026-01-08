@@ -9,7 +9,7 @@ function AboutMissionIntro() {
         </h3>
       </div>
       <div className="col-span-1 lg:col-span-2 flex flex-col px-12.25">
-        <p className="text-second-text   items-center lg:text-start text-center">
+        <p className="text-muted-foreground   items-center lg:text-start text-center">
           Problems trying to resolve the conflict between the two major realms
           of Classical physics: Newtonian mechanics
         </p>

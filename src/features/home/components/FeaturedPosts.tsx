@@ -49,7 +49,7 @@ function FeaturedPosts() {
           Practice Advice
         </h6>
         <h2 className="font-bold text-center">Featured Posts</h2>
-        <p className="text-second-text font-normal text-center max-w-2xl">
+        <p className="text-muted-foreground font-normal text-center max-w-2xl">
           Problems trying to resolve the conflict between the two major realms
           of Classical physics: Newtonian mechanics
         </p>

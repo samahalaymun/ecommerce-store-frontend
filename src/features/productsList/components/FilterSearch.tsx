@@ -19,7 +19,7 @@ function FilterSearch({ value, onChange }: FilterSearchProps) {
           data-align="inline-start"
         />
         <InputGroupAddon align="inline-end">
-          <Search size={18} className="text-second-text" />
+          <Search size={18}  />
         </InputGroupAddon>
       </InputGroup>
     </div>
