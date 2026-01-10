@@ -16,9 +16,10 @@ export type NavItemProps = {
   label?: string;
   to: string;
   icon?: ReactNode;
+  onClick?: () => void;
 };
 export type ActionNavItemProps = {
-  value?: string |number;
+  value?: string | number;
   onClick?: () => void;
   icon?: ReactNode;
   className?: string;
@@ -28,10 +29,15 @@ export type MobileDrawerProps = {
   open: boolean;
   onClose?: () => void;
 };
-
-export type AuthActionsProps= {
+export type NavItemsProps = {
   className?: string;
-}
+  onClick?: () => void;
+  stacked?: boolean;
+};
+
+export type AuthActionsProps = {
+  className?: string;
+};
 
 export type FooterItemsGroupProps = {
   header: string;

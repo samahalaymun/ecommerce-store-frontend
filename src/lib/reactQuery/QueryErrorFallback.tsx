@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { WifiOff } from "lucide-react";
 import type { FallbackProps } from "react-error-boundary";
 
 export function QueryErrorFallback({
@@ -6,12 +7,10 @@ export function QueryErrorFallback({
   resetErrorBoundary,
 }: FallbackProps) {
   return (
-    <div className="p-6 text-center">
-      <h2 className="text-destructive">
-        Something went wrong
-      </h2>
-
-      <p className="mt-2 text-muted-foreground">{(error as Error).message}</p>
+    <div className="p-6 text-center flex flex-col min-h-screen justify-center items-center gap-4">
+      <WifiOff size={100}  />
+      <h2 className="text-foreground">Something went wrong!</h2>
+      <p className="text-muted-foreground">{(error as Error).message}</p>
       <Button onClick={resetErrorBoundary}> Try again</Button>
     </div>
   );

@@ -71,6 +71,9 @@ export const DEFAULT_FILTERS: FilterState = {
 
 export const DEFAULT_PAGE = 1;
 export const DEFAULT_SORT: SortOption = "popularity";
+export const STORAGE_KEY_WISHLIST = "wishlist";
+export const STORAGE_KEY_CART = "cart";
+export const WISHLIST_KEY="favorites";
 export const themes = [
   { id: "default", label: "Default" },
   { id: "claymorphism", label: "Claymorphism" },

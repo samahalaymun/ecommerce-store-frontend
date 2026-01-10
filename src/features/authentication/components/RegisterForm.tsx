@@ -34,7 +34,15 @@ export default function RegisterForm() {
           placeholder="••••••••"
         />
       </Field>
-
+      <Field>
+        <FieldLabel htmlFor="confirmPassword">Confirm password</FieldLabel>
+        <Input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          placeholder="••••••••"
+        />
+      </Field>
       <div>
         <Button type="submit" className="w-full">
           Create account

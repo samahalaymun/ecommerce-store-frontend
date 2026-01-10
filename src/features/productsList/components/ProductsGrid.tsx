@@ -6,9 +6,10 @@ import ProductCardList from "./ProductCardList";
 type ProductsGridProps = {
   products: Product[];
   viewMode: ViewMode;
+  page?: string;
 };
 
-function ProductsGrid({ products, viewMode }: ProductsGridProps) {
+function ProductsGrid({ products, viewMode, page }: ProductsGridProps) {
   if (viewMode === "list") {
     return (
       <div className="flex flex-col gap-6">
@@ -22,7 +23,7 @@ function ProductsGrid({ products, viewMode }: ProductsGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-7.5">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard page={page} key={product.id} product={product} />
       ))}
     </div>
   );

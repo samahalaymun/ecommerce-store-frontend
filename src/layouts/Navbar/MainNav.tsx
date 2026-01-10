@@ -1,15 +1,16 @@
 import Logo from "./Logo";
-import { Heart, Search, ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 import ActionNavItem from "./ActionNavItem";
 import AuthActions from "./AuthActions";
 import NavItems from "./NavItems";
 import { useNavigate } from "react-router-dom";
-import type { Product } from "@/features/home/types";
 import ThemeToggle from "./ThemeToggle";
+import { useWishlist } from "@/features/WishList/context/WishlistContext";
+import ShoppingBagDrawer from "@/features/shoppingbag/components/ShoppingBagDrawer";
 
 function MainNav() {
   const navigate = useNavigate();
-  const favorites: Product[] = [];
+  const { items: favorites } = useWishlist();
 
   return (
     <nav
@@ -24,13 +25,7 @@ function MainNav() {
           <div className="flex items-center gap-3.75">
             <AuthActions />
             <ThemeToggle className="text-primary" />
-            <ActionNavItem
-              icon={<ShoppingCart size={15} />}
-              onClick={() => console.log("click")}
-              value="1"
-              className="text-primary"
-            />
-
+            <ShoppingBagDrawer className="text-primary" />
             <ActionNavItem
               icon={<Heart size={15} />}
               onClick={() => navigate("/favorites")}

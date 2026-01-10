@@ -1,6 +1,4 @@
 import { useRouteError, isRouteErrorResponse, Link } from "react-router-dom";
-import Navbar from "@/layouts/Navbar/Navbar";
-import Footer from "@/layouts/Footer/Footer";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft } from "lucide-react";
 import Logo from "@/layouts/Navbar/Logo";
@@ -11,6 +9,24 @@ function ErrorPage() {
   let statusCode = "404";
   let title = "Page Not Found";
   let message = "The page you are looking for doesn't exist or has been moved.";
+
+  // Detect network/axios offline errors and show friendly offline message
+  const errObj = error as any;
+  const isNavigatorOffline =
+    typeof navigator !== "undefined" && !navigator.onLine;
+  const isAxiosNetworkError =
+    errObj &&
+    (errObj.name === "AxiosError" ||
+      errObj.code === "ERR_NETWORK" ||
+      /network error/i.test(errObj?.message || ""));
+  const isRequestNoResponse = errObj && errObj.request && !errObj.response;
+
+  if (isNavigatorOffline || isAxiosNetworkError || isRequestNoResponse) {
+    statusCode = "Offline";
+    title = "You are offline";
+    message =
+      "It looks like you are not connected to the internet. Check your connection and try again.";
+  }
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
@@ -74,13 +90,13 @@ function ErrorPage() {
           </div>
         </div>
       </main>
-     <footer>
-      <div className="py-6.25 bg-secondary  px-4 lg:px-10">
-        <h6 className="font-bold text-secondary-foreground lg:text-start text-center">
-          Made With Love By Finland All Right Reserved
-        </h6>
-      </div>
-     </footer>
+      <footer>
+        <div className="py-6.25 bg-secondary  px-4 lg:px-10">
+          <h6 className="font-bold text-secondary-foreground lg:text-start text-center">
+            Made With Love By Finland All Right Reserved
+          </h6>
+        </div>
+      </footer>
     </div>
   );
 }

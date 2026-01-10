@@ -1,25 +1,30 @@
 import type { Product } from "@/features/home/types";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useWishlist } from "@/features/WishList/context/WishlistContext";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Heart } from "lucide-react";
+import { Heart, X } from "lucide-react";
+import { WISHLIST_KEY } from "@/data/constants";
 
 type ProductCardProps = {
   product: Product;
   className?: string;
+  page?: string;
 };
 
-function ProductCard({ product, className }: ProductCardProps) {
+function ProductCard({ product, className, page }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
-  const fav = false;
+  const { isIn, toggle } = useWishlist();
+  const fav = isIn(product.id);
 
   const onFavClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    toggle(product);
   };
   return (
     <Link
@@ -47,17 +52,22 @@ function ProductCard({ product, className }: ProductCardProps) {
             Sold Out
           </p>
         )}
+
         <Button
           onClick={onFavClick}
-          className="absolute top-0 end-0"
+          className="absolute top-0.5 end-0.5"
           size="icon-lg"
           variant="ghost"
           aria-pressed={fav}
         >
-          <Heart
-            size={20}
-            fill={fav ? "var(--color-foreground)" : "transparent"}
-          />
+          {page !== WISHLIST_KEY ? (
+            <Heart
+              size={20}
+              fill={fav ? "var(--color-foreground)" : "transparent"}
+            />
+          ):(
+            <X size={20}  />
+          )}
         </Button>
       </div>
       <div className="flex flex-col gap-2.5  ">

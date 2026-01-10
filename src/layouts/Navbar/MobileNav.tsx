@@ -1,14 +1,17 @@
-import { Heart, Menu, Search, ShoppingCart } from "lucide-react";
+import { Heart, Menu } from "lucide-react";
 import Logo from "./Logo";
 import ActionNavItem from "./ActionNavItem";
 import { useState } from "react";
 import MobileDrawer from "./MobileDrawer";
 import ThemeToggle from "./ThemeToggle";
+import { useWishlist } from "@/features/WishList/context/WishlistContext";
+import ShoppingBagDrawer from "@/features/shoppingbag/components/ShoppingBagDrawer";
 import { useNavigate } from "react-router-dom";
 
 function MobileNav() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { items } = useWishlist();
 
   return (
     <>
@@ -19,16 +22,11 @@ function MobileNav() {
         <Logo />
         <div className="flex gap-1">
           <ThemeToggle className="text-foreground" />
-          <ActionNavItem
-            icon={<ShoppingCart size={18} />}
-            onClick={() => console.log("click")}
-            value="1"
-            className="text-foreground"
-          />
+          <ShoppingBagDrawer className="text-foreground" />
           <ActionNavItem
             icon={<Heart size={15} />}
             onClick={() => navigate("/favorites")}
-            value={0}
+            value={items.length}
             className="text-foreground"
           />
           <ActionNavItem
@@ -38,7 +36,7 @@ function MobileNav() {
           />
         </div>
       </nav>
-      <MobileDrawer open={open} />
+      <MobileDrawer onClose={() => setOpen(!open)} open={open} />
     </>
   );
 }

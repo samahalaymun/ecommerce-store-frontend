@@ -1,7 +1,4 @@
-import { PRODUCT_CATEGORIES_QUERY_KEY } from "@/data/constants";
-import { fetchCategories } from "@/features/productsList/services/products.api";
-import { useQuery } from "@tanstack/react-query";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,20 +7,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-function NavDropDownItem() {
+
+function NavDropDownItem({
+  onClick,
+  items
+}: {
+  onClick?: () => void;
+  items?:any[]
+}) {
   const { pathname } = useLocation();
   const isShopActive = pathname.startsWith("/products");
-
-  const { data: categories } = useQuery({
-    queryKey: [PRODUCT_CATEGORIES_QUERY_KEY],
-    queryFn: fetchCategories,
-  });
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <span
           className={cn(
-            "cursor-pointer text-muted-foreground  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+            "cursor-pointer text-sm  text-muted-foreground  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
             isShopActive && "text-foreground"
           )}
         >
@@ -32,17 +31,17 @@ function NavDropDownItem() {
         </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
-        {categories?.map((cat) => (
-          <DropdownMenuItem key={cat.name} asChild>
+        {items?.map((item) => (
+          <DropdownMenuItem onClick={onClick} key={item.name} asChild>
             <Link
               className={cn(
                 "cursor-pointer",
-                pathname === `/products/category/${cat.slug}` &&
+                pathname === `/products/category/${item.slug}` &&
                   "font-bold text-foreground bg-muted"
               )}
-              to={`/products/category/${cat?.slug}`}
+              to={`/products/category/${item?.slug}`}
             >
-              {cat.name}
+              {item.name}
             </Link>
           </DropdownMenuItem>
         ))}

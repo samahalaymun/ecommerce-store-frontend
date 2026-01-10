@@ -5,6 +5,8 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "@/app/router.tsx";
 import { NuqsAdapter } from "nuqs/adapters/react";
 import { ThemeProvider } from "next-themes";
+import { WishlistProvider } from "@/features/WishList/context/WishlistContext";
+import { CartProvider } from "@/features/shoppingbag/context/CartContext";
 
 import "./App.css";
 
@@ -12,9 +14,13 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryProvider>
-        <NuqsAdapter>
-          <RouterProvider router={router} />
-        </NuqsAdapter>
+        <WishlistProvider>
+          <CartProvider>
+            <NuqsAdapter>
+              <RouterProvider router={router} />
+            </NuqsAdapter>
+          </CartProvider>
+        </WishlistProvider>
       </QueryProvider>
     </ThemeProvider>
   </StrictMode>

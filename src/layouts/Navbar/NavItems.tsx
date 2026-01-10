@@ -1,29 +1,44 @@
 import { cn } from "@/lib/utils";
 import NavItem from "./NavItem";
 import NavDropDownItem from "./NavDropDownItem";
+import type { NavItemsProps } from "../types";
+import { useQuery } from "@tanstack/react-query";
+import { PRODUCT_CATEGORIES_QUERY_KEY } from "@/data/constants";
+import { fetchCategories } from "@/features/productsList/services/products.api";
+import MobileShopNavItem from "./MobileShopNavItem";
 
-
-function NavItems({ className }: { className: string }) {
-
+function NavItems({ className, onClick, stacked }: NavItemsProps) {
+    const { data: categories } = useQuery({
+      queryKey: [PRODUCT_CATEGORIES_QUERY_KEY],
+      queryFn: fetchCategories,
+    });
   return (
-    <ul className={cn("flex gap-3.75", className)}>
+    <ul
+      className={cn(
+        stacked ? "flex flex-col gap-3 w-full" : "flex gap-3.75",
+        className
+      )}
+    >
       <li>
-        <NavItem to="/" label="Home" />
+        <NavItem onClick={onClick} to="/" label="Home" />
       </li>
       <li>
-        <NavDropDownItem />
+        {stacked && (
+          <MobileShopNavItem categories={categories} onClick={onClick} />
+        )}
+        {!stacked && <NavDropDownItem onClick={onClick} items={categories} />}
       </li>
       <li>
-        <NavItem to="/about" label="About" />
+        <NavItem onClick={onClick} to="/about" label="About" />
       </li>
       <li>
-        <NavItem to="/blog" label="Blog" />
+        <NavItem onClick={onClick} to="/blog" label="Blog" />
       </li>
       <li>
-        <NavItem to="/contact" label="Contact" />
+        <NavItem onClick={onClick} to="/contact" label="Contact" />
       </li>
       <li>
-        <NavItem to="/pages" label="Pages" />
+        <NavItem onClick={onClick} to="/pages" label="Pages" />
       </li>
     </ul>
   );

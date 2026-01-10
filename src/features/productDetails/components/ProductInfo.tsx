@@ -1,6 +1,8 @@
 import type { Product } from "@/features/home/types";
 import { Button } from "@/components/ui/button";
-import { Heart, Star, Truck, Undo2 } from "lucide-react";
+import { Heart, Star} from "lucide-react";
+import { useWishlist } from "@/features/WishList/context/WishlistContext";
+import { useCart } from "@/features/shoppingbag/context/CartContext";
 
 type Props = {
   product: Product;
@@ -24,6 +26,8 @@ function Rating({ value }: { value: number }) {
 }
 
 export default function ProductInfo({ product }: Props) {
+  const { isIn, toggle } = useWishlist();
+  const { add } = useCart();
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
@@ -48,9 +52,23 @@ export default function ProductInfo({ product }: Props) {
         <strong>Brand:</strong> {product.brand}
       </p>
       <div className="flex gap-3">
-        <Button className="flex-1">Add to cart</Button>
-        <Button variant="outline" size="icon-xl">
-          <Heart size={24} />
+        <Button
+          className="flex-1"
+          onClick={() => add(product, 1)}
+          disabled={product.stock === 0}
+        >
+          Add to cart
+        </Button>
+        <Button
+          variant="outline"
+          size="icon-xl"
+          onClick={() => toggle(product)}
+          aria-pressed={isIn(product.id)}
+        >
+          <Heart
+            size={24}
+            fill={isIn(product.id) ? "var(--color-primary)" : "none"}
+          />
         </Button>
       </div>
 
@@ -64,7 +82,6 @@ export default function ProductInfo({ product }: Props) {
             <strong>SKU:</strong> {product.sku}
           </p>
         )}
-
       </div>
     </div>
   );

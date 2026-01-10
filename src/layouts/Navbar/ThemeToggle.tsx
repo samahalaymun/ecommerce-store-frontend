@@ -39,27 +39,25 @@ function ThemeToggle({ className }: { className?: string }) {
           className={cn(
             `
               transition-colors
-              hover:bg-muted 
+              hover:bg-muted hover:text-primary
             `,
             className
           )}
-          size="icon-sm"
           variant="ghost"
+          size="icon-sm"
         >
           <Sun
             size={15}
             className={`
-              scale-100 rotate-0 transition-all
-              duration-300
-              dark:scale-0 dark:-rotate-90
+              scale-100 rotate-0 block transition-all duration-300
+              dark:scale-0 dark:-rotate-90 dark:hidden
             `}
           />
           <Moon
             size={15}
             className={`
-               scale-0 rotate-90 transition-all
-              duration-300
-              dark:scale-100 dark:rotate-0
+              absolute scale-0 hidden rotate-90 transition-all duration-300
+              dark:scale-100 dark:rotate-0 dark:block
             `}
           />
           <span className="sr-only">Toggle theme</span>

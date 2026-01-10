@@ -28,7 +28,7 @@ export const hero2Slides: HeroSlide[] = [
     description:
       "We know how large objects will act, We know how are objects will act, We know",
     buttonLabel: " ADD TO CART",
-    backgroundColor: "var(--color-secondary-1)",
+    backgroundColor: "var(--color-secondary)",
     price: 14.5,
     image: image1,
   },
@@ -38,7 +38,7 @@ export const hero2Slides: HeroSlide[] = [
     description:
       "We know how large objects will act, We know how are objects will act, We know",
     buttonLabel: " ADD TO CART",
-    backgroundColor: "var(--color-secondary-1)",
+    backgroundColor: "var(--color-secondary)",
     price: 14.5,
     image: image1,
   },
