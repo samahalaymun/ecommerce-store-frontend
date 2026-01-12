@@ -29,7 +29,7 @@ function MobileDrawer({ open, onClose }: MobileDrawerProps) {
         )}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <Logo/>
+          <Logo />
           <button
             aria-label="Close menu"
             onClick={onClose}
@@ -41,7 +41,7 @@ function MobileDrawer({ open, onClose }: MobileDrawerProps) {
 
         <div className="px-4 py-6">
           <NavItems onClick={onClose} className="mb-6" stacked />
-          <AuthActions />
+          <AuthActions stacked />
         </div>
       </aside>
     </>

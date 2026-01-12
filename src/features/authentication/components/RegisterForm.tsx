@@ -1,47 +1,100 @@
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import z from "zod";
+
+const FormSchema = z.object({
+  username: z.string().min(4, { message: "Email must be filled." }),
+  email: z.string().email({ message: "Invalid email address." }),
+  password: z.string().min(4, {
+    message: "Password must be at least 4 characters.",
+  }),
+  confirmPassword: z.string().min(4, {
+    message: "Confirm Password must be at least 4 characters.",
+  }),
+}).superRefine((values, ctx) => {
+    if (values.password !== values.confirmPassword) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["confirmPassword"],
+        message: "Passwords do not match",
+      });
+    }
+  });;
 
 export default function RegisterForm() {
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<z.infer<typeof FormSchema>>({
+      resolver: zodResolver(FormSchema),
+      defaultValues: {
+        password: "",
+        username: "",
+        email: "",
+        confirmPassword: "",
+      },
+    });
+    
+    const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    ///  handle registration logic here
+    console.log(data);
+    
+    };
   return (
-    <form className="max-w-md mx-auto space-y-4">
+    <form
+      className="max-w-md mx-auto space-y-4"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <p className="text-center text-second-text">
         Complete all sections to track your online orders and enjoy a faster
         checkout.
       </p>
 
       <Field>
-        <FieldLabel htmlFor="name">Full name</FieldLabel>
-        <Input id="name" name="name" type="text" placeholder="John Doe" />
+        <FieldLabel htmlFor="username">Full name</FieldLabel>
+        <Input
+          id="username"
+          type="text"
+          placeholder="John Doe"
+          {...register("username")}
+        />
+        <p className="text-destructive">{errors.username?.message}</p>
       </Field>
 
       <Field>
         <FieldLabel htmlFor="email">E-mail</FieldLabel>
         <Input
           id="email"
-          name="email"
           type="email"
           placeholder="you@example.com"
+          {...register("email")}
         />
+        <p className="text-destructive">{errors.email?.message}</p>
       </Field>
 
       <Field>
         <FieldLabel htmlFor="password">Password</FieldLabel>
         <Input
+          {...register("password")}
           id="password"
-          name="password"
           type="password"
-          placeholder="••••••••"
+          placeholder="password"
         />
+        <p className="text-destructive">{errors.password?.message}</p>
       </Field>
       <Field>
         <FieldLabel htmlFor="confirmPassword">Confirm password</FieldLabel>
         <Input
+          {...register("confirmPassword")}
           id="confirmPassword"
-          name="confirmPassword"
           type="password"
-          placeholder="••••••••"
+          placeholder="password confirmation"
         />
+        <p className="text-destructive">{errors.confirmPassword?.message}</p>
       </Field>
       <div>
         <Button type="submit" className="w-full">

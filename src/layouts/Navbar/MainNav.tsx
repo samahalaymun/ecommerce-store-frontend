@@ -23,7 +23,7 @@ function MainNav() {
           <NavItems className="flex-row" />
 
           <div className="flex items-center gap-3.75">
-            <AuthActions />
+            <AuthActions  />
             <ThemeToggle className="text-primary" />
             <ShoppingBagDrawer className="text-primary" />
             <ActionNavItem

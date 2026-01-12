@@ -3,7 +3,7 @@ import api from "@/lib/axios";
 import type { Category, FetchProductsArgs } from "../types";
 
 export const fetchCategories = async (): Promise<Category[]> => {
-  const res = await api.get("/products/categories");
+  const res = await api.get("/products/categories",{skipAuth:true});
   return res.data;
 };
 export async function fetchProducts({
@@ -55,11 +55,12 @@ export async function fetchProducts({
     params.sortBy = "date";
     params.order = "asc";
   }
-  console.log(url);
+ 
   
   const { data } = await api.get(url, {
     params,
     signal,
+    skipAuth: true,
   });
 
   return data;

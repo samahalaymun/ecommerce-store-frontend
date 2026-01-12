@@ -2,7 +2,6 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import SignInForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
 type Tab = "login" | "register";
 
 export default function AuthTabs({

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/features/home/types";
+import { useWishlist } from "@/features/WishList/context/WishlistContext";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,10 +11,12 @@ function ProductCardList({ product }: ProductCardListProps) {
   const originPrice = product.price;
   const salePrice =
     product.price - (product.discountPercentage * product.price) / 100;
-   const fav = false;
-  const onFavClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const { isIn, toggle } = useWishlist();
+  const fav = isIn(product.id);
+    const onFavClick = (e: React.MouseEvent) => {
+   e.preventDefault();
+   e.stopPropagation();
+   toggle(product);
   };
   return (
     <Link

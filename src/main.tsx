@@ -9,16 +9,18 @@ import { WishlistProvider } from "@/features/WishList/context/WishlistContext";
 import { CartProvider } from "@/features/shoppingbag/context/CartContext";
 
 import "./App.css";
-
+import { AuthProvider } from "./features/authentication/context/AuthContext";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryProvider>
         <WishlistProvider>
           <CartProvider>
-            <NuqsAdapter>
-              <RouterProvider router={router} />
-            </NuqsAdapter>
+            <AuthProvider>
+              <NuqsAdapter>
+                <RouterProvider router={router} />
+              </NuqsAdapter>
+            </AuthProvider>
           </CartProvider>
         </WishlistProvider>
       </QueryProvider>

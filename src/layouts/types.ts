@@ -37,6 +37,7 @@ export type NavItemsProps = {
 
 export type AuthActionsProps = {
   className?: string;
+  stacked?:boolean;
 };
 
 export type FooterItemsGroupProps = {
