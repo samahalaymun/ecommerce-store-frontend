@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import type { CategoryCard as CategoryCardType } from "../types";
 import { cn } from "@/lib/utils";
 

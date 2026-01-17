@@ -7,8 +7,9 @@ import { NuqsAdapter } from "nuqs/adapters/react";
 import { ThemeProvider } from "next-themes";
 import { WishlistProvider } from "@/features/WishList/context/WishlistContext";
 import { CartProvider } from "@/features/shoppingbag/context/CartContext";
+import "./assets/css/App.css";
+import "./assets/css/animations.css";
 
-import "./App.css";
 import { AuthProvider } from "./features/authentication/context/AuthContext";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

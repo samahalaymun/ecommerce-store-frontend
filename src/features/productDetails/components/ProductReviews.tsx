@@ -1,3 +1,4 @@
+import { Animated } from "@/components/ui/animated";
 import type { productReview } from "@/features/home/types";
 import { Star } from "lucide-react";
 
@@ -37,8 +38,10 @@ export default function ProductReviews({
     <section className="space-y-4">
       <h3 className="text-lg font-semibold">Reviews</h3>
       <div className="grid gap-4">
-        {reviews.map((r) => (
-          <ReviewItem key={r.id} r={r} />
+        {reviews.map((r, i) => (
+          <Animated delay={i*80} variant="slide" direction="left">
+            <ReviewItem key={r.id} r={r} />
+          </Animated>
         ))}
       </div>
     </section>

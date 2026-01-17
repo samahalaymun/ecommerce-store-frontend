@@ -2,6 +2,7 @@ import ProductCard from "@/components/ProductCard";
 import type { Product } from "@/features/home/types";
 import type { ViewMode } from "../types";
 import ProductCardList from "./ProductCardList";
+import { Animated } from "@/components/ui/animated";
 
 type ProductsGridProps = {
   products: Product[];
@@ -22,13 +23,18 @@ function ProductsGrid({ products, viewMode, page }: ProductsGridProps) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-7.5">
-      {products.map((product) => (
-        <ProductCard page={page} key={product.id} product={product} />
+      {products.map((product, index) => (
+        <Animated
+          key={product.id}
+          variant="enter"
+        direction="bottom"
+          delay={index * 80}
+        >
+          <ProductCard page={page} product={product} />
+        </Animated>
       ))}
     </div>
   );
 }
 
 export default ProductsGrid;
-
-

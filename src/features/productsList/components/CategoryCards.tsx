@@ -42,7 +42,7 @@ function CategoryCards() {
       >
         {isFetching ? (
           Array.from({ length: 12 }).map(() => (
-            <div className="animate-pulse shrink-0 snap-start overflow-hidden group w-20 bg-muted-foreground/20 aspect-square h-4" />
+            <div  className="animate-pulse shrink-0 snap-start overflow-hidden group w-20 bg-muted-foreground/20 aspect-square h-4" />
           ))
         ) : (
           <>

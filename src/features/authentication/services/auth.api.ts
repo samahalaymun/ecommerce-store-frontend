@@ -6,6 +6,7 @@ export const login = (data: { username: string; password: string }) =>
     ...data,
     expiresInMins: 30,
   });
+  
 export const getMe = async (): Promise<UserResponse> => {
   const res = await authApi.get<UserResponse>("/auth/me");
   return res.data;

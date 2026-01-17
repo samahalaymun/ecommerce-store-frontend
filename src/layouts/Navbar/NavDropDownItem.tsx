@@ -22,7 +22,7 @@ function NavDropDownItem({
       <DropdownMenuTrigger asChild>
         <span
           className={cn(
-            "cursor-pointer text-sm  text-muted-foreground  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+            "cursor-pointer text-sm transform ease-in duration-100    hover:scale-110 text-muted-foreground  hover:text-primary hover:bg-muted flex items-center gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
             isShopActive && "text-foreground"
           )}
         >
@@ -31,8 +31,12 @@ function NavDropDownItem({
         </span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
-        {items?.map((item) => (
-          <DropdownMenuItem onClick={onClick} key={item.name} asChild>
+        {items?.map((item, index) => (
+          <DropdownMenuItem
+            onClick={onClick}
+            key={index + "-" + item.slug}
+            asChild
+          >
             <Link
               className={cn(
                 "cursor-pointer",

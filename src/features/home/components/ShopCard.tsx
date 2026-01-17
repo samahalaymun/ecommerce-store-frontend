@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import type { ShopCardProps } from "../types";
+import { cn } from "@/lib/utils";
 
-function ShopCard({ category, image }: ShopCardProps) {
+function ShopCard({ category, image, className }: ShopCardProps) {
   return (
-    <div className="w-full h-full relative overflow-hidden">
+    <div
+      className={cn("w-full h-full relative overflow-hidden", className)}
+    >
       <img
         src={image}
         className="absolute inset-0 w-full h-full object-cover"

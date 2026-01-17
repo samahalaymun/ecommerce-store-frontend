@@ -1,3 +1,4 @@
+import { Animated } from "@/components/ui/animated";
 import {
   Carousel,
   CarouselContent,
@@ -29,11 +30,13 @@ export default function ImageCarousel({
         {images.map((src, i) => (
           <CarouselItem key={i}>
             <div className="w-full aspect-4/3 rounded-md overflow-hidden bg-card">
-              <img
-                src={src}
-                alt={`${alt} ${i + 1}`}
-                className="w-full h-full object-contain"
-              />
+              <Animated variant="scale" delay={i*80}>
+                <img
+                  src={src}
+                  alt={`${alt} ${i + 1}`}
+                  className="w-full h-full object-contain"
+                />
+              </Animated>
             </div>
           </CarouselItem>
         ))}

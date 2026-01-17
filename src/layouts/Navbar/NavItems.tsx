@@ -24,9 +24,9 @@ function NavItems({ className, onClick, stacked }: NavItemsProps) {
       </li>
       <li>
         {stacked && (
-          <MobileShopNavItem  categories={categories} onClick={onClick} />
+          <MobileShopNavItem   categories={categories} onClick={onClick} />
         )}
-        {!stacked && <NavDropDownItem onClick={onClick} items={categories} />}
+        {!stacked && <NavDropDownItem  onClick={onClick} items={categories} />}
       </li>
       <li>
         <NavItem onClick={onClick} to="/about" label="About" />

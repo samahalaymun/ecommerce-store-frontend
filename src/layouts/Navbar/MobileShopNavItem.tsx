@@ -20,7 +20,7 @@ function MobileShopNavItem({
         type="button"
         onClick={() => setOpen((s) => !s)}
         className={cn(
-          "flex w-full items-center text-sm  justify-between px-2 py-1.5  text-left font-bold",
+          "flex w-full items-center text-sm transform ease-in duration-100  transition-colors  hover:scale-110  justify-between px-2 py-1.5  text-left font-bold",
           isShopActive ? "text-foreground" : "text-muted-foreground"
         )}
         aria-expanded={open}

@@ -9,8 +9,8 @@ function NavItem({ label, to, icon, onClick }: NavItemProps) {
       onClick={onClick}
       className={({ isActive }) =>
         cn(
-          "flex items-center  text-muted-foreground  gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
-          "hover:text-primary hover:bg-muted",
+          "flex items-center  text-muted-foreground transform ease-in duration-100  gap-1.25 px-2 py-1.5 rounded-md font-bold transition-colors",
+          "hover:text-primary hover:bg-muted hover:scale-110",
           isActive && "text-forground"
         )
       }

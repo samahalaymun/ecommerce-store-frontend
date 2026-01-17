@@ -4,6 +4,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { Animated } from "@/components/ui/animated";
 import type { Product } from "@/features/home/types";
 
 type Props = { product: Product };
@@ -18,13 +19,17 @@ export default function ProductDescription({ product }: Props) {
         defaultValue="item-1"
       >
         <AccordionItem value="item-1">
-          <AccordionTrigger>Product Description</AccordionTrigger>
+          <Animated variant="slide" direction="left">
+            <AccordionTrigger>Product Description</AccordionTrigger>
+          </Animated>
           <AccordionContent className="text-muted-foreground">
             <p>{product.description}</p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger>Product Dimensions</AccordionTrigger>
+          <Animated variant="slide" direction="left">
+            <AccordionTrigger>Product Dimensions</AccordionTrigger>
+          </Animated>
           <AccordionContent className="text-muted-foreground flex flex-col gap-2">
             <p>
               <strong>Width: </strong>
@@ -41,19 +46,26 @@ export default function ProductDescription({ product }: Props) {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
-          <AccordionTrigger>Shipping Description</AccordionTrigger>
+          <Animated variant="slide" direction="left">
+            <AccordionTrigger>Shipping Description</AccordionTrigger>{" "}
+          </Animated>
+
           <AccordionContent className="text-muted-foreground">
             <p>{product.shippingInformation}</p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
-          <AccordionTrigger>Return Policy</AccordionTrigger>
+          <Animated variant="slide" direction="left">
+            <AccordionTrigger>Return Policy</AccordionTrigger>
+          </Animated>
           <AccordionContent className="text-muted-foreground">
             {product.returnPolicy}
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-5">
-          <AccordionTrigger>Warranty Information</AccordionTrigger>
+          <Animated variant="slide" direction="left">
+            <AccordionTrigger>Warranty Information</AccordionTrigger>
+          </Animated>
           <AccordionContent className="text-muted-foreground">
             {product.warrantyInformation}
           </AccordionContent>

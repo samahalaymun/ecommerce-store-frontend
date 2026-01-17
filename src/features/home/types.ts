@@ -17,6 +17,7 @@ export type CarouselIndicatorProps = {
 export type ShopCardProps = {
   category: string;
   image: string;
+  className?:string;
 };
 export type productReview = {
   id:  number;

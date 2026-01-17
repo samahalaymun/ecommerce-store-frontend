@@ -1,8 +1,25 @@
 import { useQueryStates } from "nuqs";
 import { productsQueryConfig } from "../services/products.query";
+import { useEffect, useRef } from "react";
 
-export function useProductsFilters() {
+export function useProductsFilters(category?: string) {
   const [query, setQuery] = useQueryStates(productsQueryConfig);
+  const prevCategory = useRef<string | undefined>(category);
+
+  useEffect(() => {
+    if (prevCategory.current !== category) {
+      setQuery({
+        search: null,
+        brands: null,
+        colors: null,
+        tags: null,
+        price: null,
+        page: null,
+      });
+
+      prevCategory.current = category;
+    }
+  }, [category, setQuery]);
 
   const priceRange = query.price
     ? ([query.price[0], query.price[1]] as [number, number])
@@ -11,7 +28,6 @@ export function useProductsFilters() {
   return {
     page: query.page,
     sort: query.sort,
-
     filters: {
       search: query.search,
       brands: query.brands,
@@ -31,7 +47,10 @@ export function useProductsFilters() {
         sort,
         page: null, // reset page
       }),
-
+    resetPage: () =>
+      setQuery({
+        page: null,
+      }),
     setFilters: (filters: {
       search?: string;
       brands?: string[];
@@ -48,6 +67,15 @@ export function useProductsFilters() {
           ? [filters.priceRange[0], filters.priceRange[1]]
           : null,
         page: null, // reset page
+      }),
+    resetAll: () =>
+      setQuery({
+        search: null,
+        brands: null,
+        colors: null,
+        tags: null,
+        price: null,
+        page: null,
       }),
   };
 }

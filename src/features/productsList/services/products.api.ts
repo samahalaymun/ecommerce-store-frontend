@@ -14,8 +14,7 @@ export async function fetchProducts({
   limit = 12,
   signal,
 }: FetchProductsArgs) {
-  const skip = (page - 1) * limit;
-
+  const skip = (page - 1) * limit;  
   let url = "/products";
 
   // 🔹 category endpoint

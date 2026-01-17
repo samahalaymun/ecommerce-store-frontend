@@ -7,7 +7,7 @@ import z from "zod";
 
 const FormSchema = z.object({
   username: z.string().min(4, { message: "Email must be filled." }),
-  email: z.string().email({ message: "Invalid email address." }),
+  email: z.email({ message: "Invalid email address." }),
   password: z.string().min(4, {
     message: "Password must be at least 4 characters.",
   }),

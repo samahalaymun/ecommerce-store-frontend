@@ -80,4 +80,5 @@ export const themes = [
   { id: "bold-tech", label: "Bold" },
   { id: "amethyst", label: "Amethyst Haze" },
   { id: "bubblegum", label: "Bubblegum" },
+  { id: "mono", label: "Mono" },
 ];

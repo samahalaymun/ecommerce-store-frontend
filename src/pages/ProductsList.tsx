@@ -17,7 +17,7 @@ import EmptyResult from "./EmptyResult";
 function ProductsList() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const { category } = useParams<{ category?: string }>();
-  const { page, sort, filters } = useProductsFilters();
+  const { page, sort, filters } = useProductsFilters(category);
   const [debouncedSearch] = useDebounce(filters.search, 600);
   const debouncedFilters = {
     ...filters,
@@ -51,7 +51,7 @@ function ProductsList() {
   const products = data?.products ?? [];
   const totalResults = data?.total ?? 0;
   const totalPages = Math.ceil(totalResults / 12);
-
+ 
   return (
     <div>
       {/* Controls Bar */}
@@ -74,7 +74,6 @@ function ProductsList() {
       {products.length > 0 && (
         <div className="w-full">
           <ProductsGrid products={products} viewMode={viewMode} />
-          {/* Pagination */}
           <div className="mt-12">
             <Pagination totalPages={totalPages} />
           </div>

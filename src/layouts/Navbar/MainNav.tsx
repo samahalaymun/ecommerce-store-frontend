@@ -23,14 +23,14 @@ function MainNav() {
           <NavItems className="flex-row" />
 
           <div className="flex items-center gap-3.75">
-            <AuthActions  />
-            <ThemeToggle className="text-primary" />
-            <ShoppingBagDrawer className="text-primary" />
+            <AuthActions />
+            <ThemeToggle className="text-primary transform ease-in duration-100  transition-colors  hover:scale-110" />
+            <ShoppingBagDrawer className="text-primary transform ease-in duration-100  transition-colors  hover:scale-110" />
             <ActionNavItem
               icon={<Heart size={15} />}
               onClick={() => navigate("/favorites")}
               value={favorites.length}
-              className="text-primary"
+              className="text-primary transform ease-in duration-100  transition-colors  hover:scale-110"
             />
           </div>
         </div>

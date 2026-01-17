@@ -2,6 +2,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import SignInForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Animated } from "@/components/ui/animated";
 type Tab = "login" | "register";
 
 export default function AuthTabs({
@@ -15,9 +16,12 @@ export default function AuthTabs({
   return (
     <div className="py-8">
       <div className="max-w-3xl mx-auto">
-        <h3 className="font-bold text-center uppercase mb-6">
-          Welcome to Bandage WORLD
-        </h3>
+        <Animated variant="scale" direction="bottom" delay={80}>
+          <h3 className="font-bold text-center uppercase mb-6">
+            Welcome to Bandage WORLD
+          </h3>
+        </Animated>
+
         <Tabs
           value={tab}
           onValueChange={(v) => navigate(`?tab=${v}`, { replace: true })}
@@ -29,13 +33,16 @@ export default function AuthTabs({
             <TabsTrigger value="register">Register</TabsTrigger>
           </TabsList>
           <TabsContent value="login" className="w-full p-4 bg-background">
-            <SignInForm />
+            <Animated variant="scale" direction="bottom" delay={80}>
+              <SignInForm />
+            </Animated>
           </TabsContent>
           <TabsContent value="register" className="w-full p-4 bg-background">
-            <RegisterForm />
+            <Animated variant="scale" direction="bottom" delay={80}>
+              <RegisterForm />
+            </Animated>
           </TabsContent>
         </Tabs>
-
       </div>
     </div>
   );

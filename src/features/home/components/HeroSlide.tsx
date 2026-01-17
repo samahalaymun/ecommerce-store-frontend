@@ -1,3 +1,4 @@
+import { Animated } from "@/components/ui/animated";
 import { Button } from "@/components/ui/button";
 import type { HeroSlide as HeroSlideType } from "@/features/home/types";
 
@@ -6,7 +7,7 @@ type Props = {
   isActive: boolean;
 };
 
-function HeroSlide({ slide,isActive }: Props) {
+function HeroSlide({ slide, isActive }: Props) {
   return (
     <div
       className="relative text-primary-foreground min-h-130 flex items-center"
@@ -32,20 +33,24 @@ function HeroSlide({ slide,isActive }: Props) {
             }
           `}
           >
-            <h5 className="font-bold">{slide.subtitle}</h5>
-            <h1 className="font-bold">{slide.title}</h1>
+            <Animated variant="slide" direction="left" delay={80}>
+              <h5 className="font-bold">{slide.subtitle}</h5>
+            </Animated>
+            <Animated variant="slide" direction="left" delay={160}>
+              <h1 className="font-bold">{slide.title}</h1>
+            </Animated>
+            <Animated variant="slide" direction="left" delay={240}>
+              <h4 className="text-light-gray-1 max-w-md mx-auto lg:mx-0">
+                {slide.description}
+              </h4>
+            </Animated>
+            <Animated variant="slide" direction="left" delay={320}>
+              <div className="flex flex-col lg:flex-row gap-6 items-center">
+                {slide.price && <h3 className="font-bold">${slide.price}</h3>}
 
-            <h4 className="text-light-gray-1 max-w-md mx-auto lg:mx-0">
-              {slide.description}
-            </h4>
-
-            <div className="flex flex-col lg:flex-row gap-6 items-center">
-              {slide.price && <h3 className="font-bold">${slide.price}</h3>}
-
-              <Button className="bg-success hover:bg-success/70">
-                {slide.buttonLabel}
-              </Button>
-            </div>
+                <Button variant="secondary">{slide.buttonLabel}</Button>
+              </div>
+            </Animated>
           </div>
 
           {slide.image && (
